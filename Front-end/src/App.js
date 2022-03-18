@@ -15,25 +15,24 @@ function App() {
         .then(res => res.json())
         .then(res => {
             setData(res)
-            console.log('test1', res)
-            
         })
   }
 
   let displayPatient =(
     
-    console.log(data.success),
-    data.success.map(element =>{
+    console.log('test1', data),
+    data.map(element =>{
 
-        console.log(".map", element)
+        console.log(".map", element.success)
         
         return(
             <tr>
-              <td>{element.nom}</td>
-              <td>{element.prenom}</td>
-              <td>{element.age}</td>
-              <td>{element.taille}</td>
-              <td>{element.poids}</td>
+              <td>{element.success.nom}</td>
+              <td>{element.success.prenom}</td>
+              <td>{element.success.age}</td>
+              <td>{element.success.taille}</td>
+              <td>{element.success.poids}</td>
+              <td><button></button><hr></hr><button></button></td>
             </tr>)
     })
     
@@ -58,7 +57,7 @@ function App() {
             </tr>
           </thead>
           <tbody>
-      {data.success.length == 0 ? console.log("data is undefined") : displayPatient}
+      {data.length == 0 ? console.log("data is undefined") : displayPatient}
       </tbody>
       </table>
     </div>
