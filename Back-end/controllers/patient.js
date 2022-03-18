@@ -19,11 +19,12 @@ module.exports = {
         let connexion;
         try {
             connexion = await pool.getConnection();
-            const nom = req.params.circuit
-            const prenom = req.params.date
-            const age = req.params.heure
-            const taille = req.params.en_cour
-            const poids = req.params.tour
+            const nom = req.params.nom
+            console.log(nom)
+            const prenom = req.params.prenom
+            const age = req.params.age
+            const taille = req.params.taille
+            const poids = req.params.poids
             const result = await connexion.query('CALL add_patient("'+nom+'", "'+prenom+'", "'+age+'", "'+taille+'", "'+poids+'");');
             console.log(result);
             return res.status(200).json(result)
@@ -54,11 +55,11 @@ module.exports = {
         try {
             connexion = await pool.getConnection();
             const id = parseInt(req.params.id)
-            const nom = req.params.circuit
-            const prenom = req.params.date
-            const age = req.params.heure
-            const taille = req.params.en_cour
-            const poids = req.params.tour
+            const nom = req.params.nom
+            const prenom = req.params.prenom
+            const age = req.params.age
+            const taille = req.params.taille
+            const poids = req.params.poids
             const result = await connexion.query('CALL modif_patient("'+id+'","'+nom+'", "'+prenom+'", "'+age+'", "'+taille+'", "'+poids+'");');
             console.log(result);
             return res.status(200).json(result)
