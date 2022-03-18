@@ -6,9 +6,9 @@ module.exports = {
         let connexion;
         try {
             connexion = await pool.getConnection();
-            const result = await connexion.query('CALL patient();');
+            const result = await connexion.query('Select * from patient;');
             console.log(result);
-            return res.status(200).json({ success: result })
+            return res.status(200).json(result)
         } catch (error) {
             return res.status(400).json({ error: error.message });
         } finally {
